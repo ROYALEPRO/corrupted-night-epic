@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Gltch animation.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Glitch Dead Loop0000" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0001" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0002" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0003" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0004" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0005" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0006" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0007" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0008" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0009" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0010" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0011" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0012" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0013" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0014" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0015" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0016" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0017" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0018" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0019" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0020" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0021" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0022" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0023" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0024" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0025" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0026" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0027" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0028" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0029" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0030" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0031" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0032" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead Loop0033" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0000" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0001" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0002" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0003" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0004" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0005" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0006" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0007" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0008" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0009" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0010" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0011" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0012" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0013" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0014" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0015" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0016" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0017" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0018" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0019" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0020" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0021" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0022" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0023" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0024" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0025" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0026" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0027" x="1271" y="0" width="1289" height="587" frameX="0" frameY="0" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0028" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0029" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-60" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0030" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0031" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-11" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0032" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch Dead confirm0033" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-7" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0000" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0001" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0002" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0003" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0004" x="5200" y="0" width="1080" height="822" frameX="-705" frameY="-346" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0005" x="5200" y="0" width="1080" height="822" frameX="-705" frameY="-346" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0006" x="6280" y="0" width="1202" height="855" frameX="-666" frameY="-316" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0007" x="0" y="855" width="1339" height="1000" frameX="-633" frameY="-183" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0008" x="1339" y="855" width="1332" height="1090" frameX="-609" frameY="-142" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0009" x="2671" y="855" width="1501" height="1143" frameX="-503" frameY="-122" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0010" x="4172" y="855" width="1575" height="1224" frameX="-517" frameY="-132" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0011" x="5747" y="855" width="1883" height="1345" frameX="-319" frameY="0" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0012" x="0" y="2200" width="1888" height="1125" frameX="-268" frameY="-129" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0013" x="1888" y="2200" width="1734" height="1028" frameX="-351" frameY="-235" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0014" x="3622" y="2200" width="1959" height="1028" frameX="-272" frameY="-321" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0015" x="5581" y="2200" width="2154" height="926" frameX="-242" frameY="-353" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0016" x="0" y="3325" width="2599" height="864" frameX="-278" frameY="-492" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0017" x="2599" y="3325" width="2835" height="725" frameX="-125" frameY="-635" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0018" x="5434" y="3325" width="2712" height="604" frameX="-180" frameY="-738" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0019" x="0" y="4189" width="2880" height="696" frameX="0" frameY="-664" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0020" x="2880" y="4189" width="2504" height="601" frameX="-231" frameY="-814" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0021" x="5384" y="4189" width="2101" height="630" frameX="-409" frameY="-774" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0022" x="0" y="4885" width="1906" height="659" frameX="-450" frameY="-642" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0023" x="1906" y="4885" width="1747" height="659" frameX="-330" frameY="-635" frameWidth="2960" frameHeight="1415"/>
+	<SubTexture name="Glitch dies0024" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0025" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0026" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0027" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0028" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0029" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0030" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0031" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0032" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0033" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0034" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0035" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0036" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0037" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0038" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0039" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0040" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0041" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0042" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0043" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0044" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0045" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0046" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0047" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0048" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0049" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0050" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0051" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0052" x="1271" y="0" width="1289" height="587" frameX="-562" frameY="-661" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0053" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0054" x="2560" y="0" width="1271" height="568" frameX="-572" frameY="-720" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0055" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0056" x="3831" y="0" width="1369" height="559" frameX="-565" frameY="-671" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Glitch dies0057" x="0" y="0" width="1271" height="578" frameX="-603" frameY="-667" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0000" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-559" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0001" x="3653" y="4885" width="2054" height="821" frameX="-86" frameY="-235" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0002" x="5707" y="4885" width="1757" height="854" frameX="-47" frameY="-205" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0003" x="0" y="5739" width="1453" height="1000" frameX="-14" frameY="-71" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0004" x="1453" y="5739" width="1338" height="1018" frameX="-11" frameY="-1" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0005" x="2791" y="5739" width="1078" height="1041" frameX="-129" frameY="0" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0006" x="2791" y="5739" width="1078" height="1041" frameX="-129" frameY="0" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0007" x="3869" y="5739" width="1149" height="1054" frameX="-8" frameY="-26" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0008" x="3869" y="5739" width="1149" height="1054" frameX="-8" frameY="-26" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0009" x="5018" y="5739" width="1161" height="1061" frameX="-50" frameY="-37" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0010" x="5018" y="5739" width="1161" height="1061" frameX="-50" frameY="-37" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0011" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-559" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0012" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-559" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0013" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-555" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0014" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-555" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0015" x="6179" y="5739" width="1289" height="586" frameX="0" frameY="-549" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0016" x="6179" y="5739" width="1289" height="586" frameX="0" frameY="-549" frameWidth="2140" frameHeight="1177"/>
+	<SubTexture name="Miss glitch0017" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-608" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0018" x="2560" y="0" width="1271" height="568" frameX="-10" frameY="-608" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0019" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-559" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0020" x="3831" y="0" width="1369" height="559" frameX="-3" frameY="-559" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0021" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-555" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0022" x="0" y="0" width="1271" height="578" frameX="-41" frameY="-555" frameWidth="1372" frameHeight="628"/>
+	<SubTexture name="Miss glitch0023" x="6179" y="5739" width="1289" height="586" frameX="0" frameY="-549" frameWidth="2140" frameHeight="1177"/>
+</TextureAtlas>

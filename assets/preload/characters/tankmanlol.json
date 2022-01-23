@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				-160
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Tankman Idle Dance",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				139,
+				-102
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Tankman Note Left",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				140,
+				-258
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Tankman DOWN note",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				78,
+				-85
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Tankman UP note",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				1,
+				-166
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Tankman Right Note",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				68,
+				-92
+			],
+			"anim": "ugh",
+			"fps": 24,
+			"name": "TANKMAN UGH",
+			"indices": []
+		},
+		{
+			"offsets": [
+				60,
+				-109
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "good",
+			"loop": false,
+			"name": "VERY GOOD tankman"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Tankman_Glitch_Assets_2",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "tankman",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		150
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

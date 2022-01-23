@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="GF_glitch.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="GF Dancing Beat0000" x="0" y="0" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0001" x="858" y="0" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0002" x="1716" y="0" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0003" x="2574" y="0" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0004" x="0" y="704" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0005" x="858" y="704" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0006" x="1716" y="704" width="858" height="704"/>
+	<SubTexture name="GF Dancing Beat0007" x="2574" y="704" width="858" height="704"/>
+</TextureAtlas>

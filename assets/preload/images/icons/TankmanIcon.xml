@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="TankmanIcon.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="TankmanIcon0000" x="0" y="0" width="113" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0001" x="0" y="0" width="113" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0002" x="113" y="0" width="115" height="108" frameX="0" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0003" x="113" y="0" width="115" height="108" frameX="0" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0004" x="0" y="108" width="118" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0005" x="0" y="108" width="118" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0006" x="118" y="108" width="116" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+	<SubTexture name="TankmanIcon0007" x="118" y="108" width="116" height="108" frameX="-2" frameY="0" frameWidth="120" frameHeight="108"/>
+</TextureAtlas>

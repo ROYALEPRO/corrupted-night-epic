@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="LogoBumpin.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Symbol 110000" x="0" y="0" width="1504" height="704" frameX="-25" frameY="-23" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110001" x="1504" y="0" width="1495" height="721" frameX="-33" frameY="-23" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110002" x="0" y="721" width="1512" height="678" frameX="-17" frameY="-23" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110003" x="1512" y="721" width="1513" height="702" frameX="-26" frameY="-15" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110004" x="1512" y="721" width="1513" height="702" frameX="-26" frameY="-15" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110005" x="0" y="1423" width="1515" height="708" frameX="-25" frameY="-12" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110006" x="0" y="1423" width="1515" height="708" frameX="-25" frameY="-12" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110007" x="1515" y="1423" width="1521" height="707" frameX="-22" frameY="-13" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110008" x="1515" y="1423" width="1521" height="707" frameX="-22" frameY="-13" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110009" x="0" y="2131" width="1540" height="717" frameX="-12" frameY="-8" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110010" x="0" y="2131" width="1540" height="717" frameX="-12" frameY="-8" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110011" x="1540" y="2131" width="1561" height="731" frameX="-2" frameY="-1" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110012" x="1540" y="2131" width="1561" height="731" frameX="-2" frameY="-1" frameWidth="1564" frameHeight="744"/>
+	<SubTexture name="Symbol 110013" x="0" y="2862" width="1564" height="732" frameX="0" frameY="0" frameWidth="1564" frameHeight="744"/>
+</TextureAtlas>

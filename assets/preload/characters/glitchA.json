@@ -1,0 +1,67 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "Miss",
+			"loop": false,
+			"name": "Miss glitch"
+		},
+		{
+			"offsets": [
+				570,
+				99
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "die",
+			"loop": false,
+			"name": "Glitch dies"
+		},
+		{
+			"offsets": [
+				10,
+				-540
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "dieLoop",
+			"loop": true,
+			"name": "Glitch Dead Loop"
+		},
+		{
+			"offsets": [
+				11,
+				-537
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "dieConfirm",
+			"loop": false,
+			"name": "Glitch Dead confirm"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "tankman/Gltch_animation",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

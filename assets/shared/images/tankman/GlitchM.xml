@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="GlitchM.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Glitch bucle0000" x="0" y="0" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0001" x="0" y="0" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0002" x="1372" y="0" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0003" x="1372" y="0" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0004" x="0" y="628" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0005" x="0" y="628" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0006" x="1372" y="628" width="1372" height="628"/>
+	<SubTexture name="Glitch bucle0007" x="1372" y="628" width="1372" height="628"/>
+</TextureAtlas>
