@@ -11,6 +11,7 @@ import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
+import openfl.filters.ShaderFilter;
 import flixel.FlxState;
 import flixel.FlxBasic;
 
@@ -36,6 +37,14 @@ class MusicBeatState extends FlxUIState
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 	}
+
+	public var chromaticAberration(get, never):ShaderFilter;
+	
+	inline function get_chromaticAberration():ShaderFilter
+		return ChromaHandler.chromaticAberration;
+
+	public function setChrome(daChrome:Float):Void
+		ChromaHandler.setChrome(daChrome);
 	
 	#if (VIDEOS_ALLOWED && windows)
 	override public function onFocus():Void

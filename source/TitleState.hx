@@ -68,6 +68,10 @@ class TitleState extends MusicBeatState
 
 	var bfScreamer:FlxSprite;
 
+	var canenter = false;
+
+	var huevoPascua:Int = 69;
+
 	var easterEggEnabled:Bool = true; //Disable this to hide the easter egg
 	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.B]; //bb stands for bbpanzu cuz he wanted this lmao
 	var lastKeysPressed:Array<FlxKey> = [];
@@ -77,6 +81,7 @@ class TitleState extends MusicBeatState
 	var titleJSON:TitleData;
 	
 	public static var updateVersion:String = '';
+	public static var lastStage:Int = 0;
 
 	override public function create():Void
 	{
@@ -376,13 +381,35 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		add(ngSpr);
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
-		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = true;
+		huevoPascua = FlxG.random.int(0,10000);
+		if (huevoPascua > 10000) huevoPascua = 0;
+
+		if (huevoPascua == 6969)
+		{
+			ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('kiss'));
+			add(ngSpr);
+			ngSpr.visible = false;
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+			ngSpr.updateHitbox();
+			ngSpr.screenCenter(X);
+			ngSpr.antialiasing = true;
+		} else if (huevoPascua > 6969 || huevoPascua < 6969)
+		{
+			ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+			add(ngSpr);
+			ngSpr.visible = false;
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+			ngSpr.updateHitbox();
+			ngSpr.screenCenter(X);
+			ngSpr.antialiasing = true;
+		}
+
+		#if debug
+		if (FlxG.keys.justPressed.NINE)
+		{
+			huevoPascua = 6969;
+		}
+		#end
 
 		bfScreamer = new FlxSprite().loadGraphic(Paths.image('bfDeadLOL'));
 		bfScreamer.antialiasing = ClientPrefs.globalAntialiasing;
@@ -393,6 +420,11 @@ class TitleState extends MusicBeatState
 		add(bfScreamer);
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
+
+		if(FlxG.sound.music.time < 6950 && skippedIntro)
+		{
+			FlxG.sound.music.time = 6950;
+		}
 
 		if (initialized)
 			skipIntro();
@@ -459,7 +491,7 @@ class TitleState extends MusicBeatState
 
 		if (!transitioning && skippedIntro)
 		{
-			if(pressedEnter)
+			if(pressedEnter && canenter)
 			{
 				if(titleText != null) titleText.animation.play('press');
 
@@ -473,8 +505,10 @@ class TitleState extends MusicBeatState
 				{
 					if (mustUpdate) {
 						MusicBeatState.switchState(new OutdatedState());
+						lastStage = 0;
 					} else {
 						MusicBeatState.switchState(new MainMenuState());
+						lastStage = 0;
 					}
 					closedState = true;
 				});
@@ -665,7 +699,11 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.time = 6950;
 			new FlxTimer().start(0.8, function(tmr:FlxTimer)
 			{
-				FlxTween.tween(bfScreamer, {alpha: 0}, 1, {ease: FlxEase.quadInOut});
+				FlxTween.tween(bfScreamer, {alpha: 0}, 1, {ease: FlxEase.quadInOut,
+					onComplete: function(twn:FlxTween) {
+						canenter = true;
+					}
+				});
 			});
 
 			FlxTween.tween(background, {alpha: 0.8}, 4, {ease: FlxEase.quadInOut});

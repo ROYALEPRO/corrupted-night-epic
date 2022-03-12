@@ -47,9 +47,10 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+
+	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 
 	public var fp:FlxSprite;
 
@@ -61,6 +62,8 @@ class FreeplayState extends MusicBeatState
 		
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
+
+		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -104,28 +107,35 @@ class FreeplayState extends MusicBeatState
 			}
 		}*/
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		var bgName:String = songs[curSelected].songCharacter;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/$bgName'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.screenCenter();
 		add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		fp = new FlxSprite(2000, 190).loadGraphic(Paths.image('mainmenu/followPoint'));
+		fp = new FlxSprite(511, 190).loadGraphic(Paths.image('mainmenu/followPoint'));
 		fp.updateHitbox();
 		fp.antialiasing = ClientPrefs.globalAntialiasing;
 		add(fp);
 		FlxG.camera.follow(fp);
-		FlxTween.tween(fp, {x: 511}, 1.3, {
-			ease: FlxEase.sineInOut,
-			startDelay: 1
-		});
+
+		if(TitleState.lastStage == 1)
+		{
+			fp.x = 2000;
+			FlxTween.tween(fp, {x: 511}, 1.3, {
+				ease: FlxEase.sineInOut,
+				startDelay: 1
+			});
+		}
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
-			songText.isMenuItem = true;
-			songText.targetY = i;
+			var songText:Alphabet = new Alphabet(0, 0, songs[i].songName, true, false);
+			songText.screenCenter();
+			songText.y += (100 * (i - (songs.length / 2))) + 50;
 			grpSongs.add(songText);
 
 			Paths.currentModDirectory = songs[i].folder;
@@ -141,8 +151,9 @@ class FreeplayState extends MusicBeatState
 		}
 		WeekData.setDirectoryFromWeek();
 
-		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
-		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		scoreText = new FlxText(FlxG.width / 2, 10, 0, "", 40);
+		scoreText.screenCenter(X);
+		scoreText.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.WHITE, RIGHT);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -150,13 +161,19 @@ class FreeplayState extends MusicBeatState
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
-		add(diffText);
+
+		var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/dark'));
+		dark.screenCenter();
+		dark.antialiasing = ClientPrefs.globalAntialiasing;
+		dark.width = FlxG.width;
+		dark.height = FlxG.height;
 
 		add(scoreText);
+		add(dark);
 
 		if(curSelected >= songs.length) curSelected = 0;
-		bg.color = songs[curSelected].color;
-		intendedColor = bg.color;
+		//bg.color = songs[curSelected].color;
+		//intendedColor = bg.color;
 
 		if(lastDifficultyName == '')
 		{
@@ -199,7 +216,6 @@ class FreeplayState extends MusicBeatState
 		#end
 		var text:FlxText = new FlxText(textBG.x - 230, textBG.y + 4, FlxG.width, leText, size);
 		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
-		text.scrollFactor.set();
 		add(text);
 		super.create();
 	}
@@ -276,11 +292,6 @@ class FreeplayState extends MusicBeatState
 		{
 			changeSelection(shiftMult);
 		}
-
-		if (controls.UI_LEFT_P)
-			changeDiff(-1);
-		else if (controls.UI_RIGHT_P)
-			changeDiff(1);
 		else if (upP || downP) changeDiff();
 
 		if (controls.BACK)
@@ -295,7 +306,10 @@ class FreeplayState extends MusicBeatState
 				ease: FlxEase.sineInOut,
 				onComplete: function(twn:FlxTween)
 				{
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
 					MusicBeatState.switchState(new MainMenuState());
+					TitleState.lastStage = 3;
 					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.sound.music.time = 6950;
 			    }
@@ -332,8 +346,10 @@ class FreeplayState extends MusicBeatState
 			
 			if (FlxG.keys.pressed.SHIFT){
 				LoadingState.loadAndSwitchState(new ChartingState());
+				TitleState.lastStage = 3;
 			}else{
 				LoadingState.loadAndSwitchState(new PlayState());
+				TitleState.lastStage = 3;
 			}
 
 			FlxG.sound.music.volume = 0;
@@ -390,7 +406,7 @@ class FreeplayState extends MusicBeatState
 			
 		var newColor:Int = songs[curSelected].color;
 		if(newColor != intendedColor) {
-			if(colorTween != null) {
+			/*if(colorTween != null) {
 				colorTween.cancel();
 			}
 			intendedColor = newColor;
@@ -398,7 +414,7 @@ class FreeplayState extends MusicBeatState
 				onComplete: function(twn:FlxTween) {
 					colorTween = null;
 				}
-			});
+			});*/
 		}
 
 		// selector.y = (70 * curSelected) + 30;
@@ -469,10 +485,10 @@ class FreeplayState extends MusicBeatState
 	}
 
 	private function positionHighscore() {
-		scoreText.x = FlxG.width - scoreText.width - 6;
+		scoreText.screenCenter(X);
 
-		scoreBG.scale.x = FlxG.width - scoreText.x + 6;
-		scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
+		scoreBG.scale.x = FlxG.width;
+		scoreBG.screenCenter(X);
 		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
 		diffText.x -= diffText.width / 2;
 	}

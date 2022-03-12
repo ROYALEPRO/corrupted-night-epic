@@ -1,17 +1,6 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [
-				70,
-				-160
-			],
-			"anim": "idle",
-			"fps": 24,
-			"name": "Tankman Idle Dance",
-			"indices": []
-		},
-		{
 			"loop": true,
 			"offsets": [
 				139,
@@ -71,11 +60,22 @@
 				60,
 				-109
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "good",
-			"loop": false,
+			"indices": [],
 			"name": "VERY GOOD tankman"
+		},
+		{
+			"offsets": [
+				70,
+				-160
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "Tankman Idle Dance"
 		}
 	],
 	"no_antialiasing": false,

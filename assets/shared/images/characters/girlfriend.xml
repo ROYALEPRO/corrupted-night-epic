@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="girlfriend.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle gf0000" x="0" y="0" width="312" height="434" frameX="-1" frameY="-1" frameWidth="315" frameHeight="435"/>
+	<SubTexture name="idle gf0001" x="312" y="0" width="313" height="435" frameX="-2" frameY="0" frameWidth="315" frameHeight="435"/>
+	<SubTexture name="idle gf0002" x="625" y="0" width="313" height="434" frameX="0" frameY="-1" frameWidth="315" frameHeight="435"/>
+	<SubTexture name="idle gf0003" x="938" y="0" width="312" height="433" frameX="-2" frameY="-2" frameWidth="315" frameHeight="435"/>
+	<SubTexture name="idle gf0004" x="1250" y="0" width="312" height="435" frameX="0" frameY="0" frameWidth="315" frameHeight="435"/>
+	<SubTexture name="idle gf0005" x="1562" y="0" width="312" height="435" frameX="0" frameY="0" frameWidth="315" frameHeight="435"/>
+</TextureAtlas>

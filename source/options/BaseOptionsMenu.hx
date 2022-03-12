@@ -44,6 +44,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public var title:String;
 	public var rpcTitle:String;
 
+	var ash:FlxSprite;
+
 	public function new()
 	{
 		super();
@@ -88,6 +90,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
 		add(descText);
+
+		ash = new FlxSprite(840, 170).loadGraphic(Paths.image('green_ash'));
+		ash.antialiasing = ClientPrefs.globalAntialiasing;
+		ash.visible = false;
+		add(ash);
 
 		for (i in 0...optionsArray.length)
 		{
@@ -331,20 +338,13 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 	public function reloadBoyfriend()
 	{
-		var wasVisible:Bool = false;
-		if(boyfriend != null) {
-			wasVisible = boyfriend.visible;
-			boyfriend.kill();
-			remove(boyfriend);
-			boyfriend.destroy();
+		for (i in 0...optionsArray.length)
+		{
+			if(optionsArray[i].showBoyfriend)
+			{
+				ash.visible = true;
+			}
 		}
-
-		boyfriend = new Character(840, 170, 'bf', true);
-		boyfriend.setGraphicSize(Std.int(boyfriend.width * 0.75));
-		boyfriend.updateHitbox();
-		boyfriend.dance();
-		insert(1, boyfriend);
-		boyfriend.visible = wasVisible;
 	}
 
 	function reloadCheckboxes() {

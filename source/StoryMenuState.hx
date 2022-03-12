@@ -75,9 +75,9 @@ class StoryMenuState extends MusicBeatState
 		FlxG.sound.playMusic(Paths.music('storyMusic'), 0);
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('storymode/google_paint_wood_search'));
-		bg.updateHitbox();
 		bg.width = FlxG.width;
 		bg.height = FlxG.height;
+		bg.alpha = 0.7;
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
@@ -311,6 +311,7 @@ class StoryMenuState extends MusicBeatState
 			movedBack = true;
 			FlxG.sound.music.fadeOut(3, 0);
 			MusicBeatState.switchState(new MainMenuState());
+			TitleState.lastStage = 2;
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 			FlxG.sound.music.time = 6950;
 		}
@@ -366,6 +367,7 @@ class StoryMenuState extends MusicBeatState
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				LoadingState.loadAndSwitchState(new PlayState(), true);
+				TitleState.lastStage = 3;
 				FreeplayState.destroyFreeplayVocals();
 			});
 		} else {

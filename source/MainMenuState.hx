@@ -108,7 +108,10 @@ class MainMenuState extends MusicBeatState
 			});
 		}
 
-		bop(bg);
+		if(TitleState.lastStage != 4)
+		{
+			bop(bg);
+		}
 
 		var logo:FlxSprite = new FlxSprite(10, 0).loadGraphic(Paths.image('titlelogo'));
 		logo.scale.set(0.7, 0.7);
@@ -145,6 +148,28 @@ class MainMenuState extends MusicBeatState
 		fp.antialiasing = ClientPrefs.globalAntialiasing;
 		add(fp);
 
+		if(TitleState.lastStage == 3)
+		{
+			fp.x = -1000;
+			FlxG.camera.follow(fp);
+			FlxG.sound.music.fadeIn(1, 0, 1);
+			FlxTween.tween(fp, {x: 511}, 1.3, {ease: FlxEase.sineInOut});
+		} else if(TitleState.lastStage == 4)
+		{
+			bg.x = 1489;
+			frontBG.x = 1489;
+			fp.x = 2000;
+			FlxG.camera.follow(fp);
+			FlxTween.tween(bg, {x: 0}, 1.3, {ease: FlxEase.sineInOut,
+				onComplete: function(twn:FlxTween)
+				{
+					bop(bg);
+				}
+			});
+			FlxTween.tween(frontBG, {x: 0}, 1.3, {ease: FlxEase.sineInOut});
+			FlxTween.tween(fp, {x: 511}, 1.3, {ease: FlxEase.sineInOut});
+		}
+
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
@@ -167,11 +192,10 @@ class MainMenuState extends MusicBeatState
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItem.scale.set(0.8, 0.8);
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
+			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 		}
 
 		// NG.core.calls.event.logEvent('swag').send();
@@ -188,6 +212,11 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
+
+		if(FlxG.sound.music.time < 6950)
+		{
+			FlxG.sound.music.time = 6950;
 		}
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
@@ -224,15 +253,6 @@ class MainMenuState extends MusicBeatState
 							FlxG.sound.resume();
 							bfGlitch.visible = true;
 						}
-
-						#if ACHIEVEMENTS_ALLOWED
-						var achieveID:Int = Achievements.getAchievementIndex('aqui_esta_tu_vieja_mira_como_me_la_cacho');
-						if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][16])) { //aquiestatuviejainutilmiracomomelacachotomeseñoraoooooo
-							Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][16], true);
-							giveAchievement();
-							ClientPrefs.saveSettings();
-						}
-						#end
 					}
 				}
 				else if(lkp.length == sega.length)
@@ -293,8 +313,6 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
 					menuItems.forEach(function(spr:FlxSprite)
 					{
 						if (curSelected != spr.ID)
@@ -329,6 +347,7 @@ class MainMenuState extends MusicBeatState
 												});
 											}
 										});
+										TitleState.lastStage = 1;
 									case 'freeplay':
 										FlxG.camera.follow(fp);
 										FlxG.sound.music.fadeOut(1.5, 0);
@@ -339,6 +358,7 @@ class MainMenuState extends MusicBeatState
 												MusicBeatState.switchState(new FreeplayState());
 											}
 										});
+										TitleState.lastStage = 1;
 									#if MODS_ALLOWED
 									case 'mods':
 										MusicBeatState.switchState(new ModsMenuState());
@@ -361,12 +381,20 @@ class MainMenuState extends MusicBeatState
 												MusicBeatState.switchState(new options.OptionsState());
 											}
 										});
+										TitleState.lastStage = 1;
 								}
 							});
 						}
 					});
 				}
 			}
+			#if desktop
+			else if (FlxG.keys.anyJustPressed(debugKeys))
+			{
+				selectedSomethin = true;
+				MusicBeatState.switchState(new MasterEditorMenu());
+			}
+			#end
 		}
 
 		super.update(elapsed);
@@ -393,7 +421,6 @@ class MainMenuState extends MusicBeatState
 			if (spr.ID == curSelected)
 			{
 				spr.animation.play('selected');
-				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 				spr.offset.x = 0.15 * (spr.frameWidth / 2 + 180);
 				spr.offset.y = 0.15 * spr.frameHeight;
 				FlxG.log.add(spr.frameWidth);

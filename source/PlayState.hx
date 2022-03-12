@@ -20,6 +20,7 @@ import flixel.addons.effects.FlxTrailArea;
 import flixel.addons.effects.chainable.FlxEffectSprite;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
+import lime.app.Application;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -28,6 +29,7 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
+import openfl.Lib;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
@@ -41,6 +43,9 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import flixel.system.FlxAssets.FlxShader;
+import openfl.display.Shader;
+import openfl.filters.BitmapFilter;
 import openfl.utils.Assets as OpenFlAssets;
 import editors.ChartingState;
 import editors.CharacterEditorState;
@@ -51,6 +56,7 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
+import Shaders;
 
 #if sys
 import sys.FileSystem;
@@ -81,6 +87,9 @@ class PlayState extends MusicBeatState
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
 	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
 	public var modchartTexts:Map<String, ModchartText> = new Map<String, ModchartText>();
+	public var camGameShaders:Array<ShaderEffect> = [];
+	public var camHUDShaders:Array<ShaderEffect> = [];
+	public var camOtherShaders:Array<ShaderEffect> = [];
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -108,6 +117,9 @@ class PlayState extends MusicBeatState
 	public var dadGroup:FlxSpriteGroup;
 	public var gfGroup:FlxSpriteGroup;
 
+	var idk:FlxSprite;
+	public var shaderUpdates:Array<Float->Void> = [];
+
 	public static var curStage:String = '';
 	public static var isPixelStage:Bool = false;
 	public static var SONG:SwagSong = null;
@@ -117,6 +129,10 @@ class PlayState extends MusicBeatState
 	public static var storyDifficulty:Int = 1;
 
 	public var vocals:FlxSound;
+
+	var windowOrigin:FlxPoint;
+
+	var fuckMe:Float = 0;
 
 	public var dad:Character;
 	public var gf:Character;
@@ -200,7 +216,7 @@ class PlayState extends MusicBeatState
 	var phillyCityLightsEventTween:FlxTween;
 	var trainSound:FlxSound;
 
-	var tower:FlxSprite;
+	var tower:BGSprite;
 	var smokeRight:FlxSprite;
 	var smokeLeft:FlxSprite;
 
@@ -219,6 +235,11 @@ class PlayState extends MusicBeatState
 	var bottomBoppers:BGSprite;
 	var santa:BGSprite;
 	var heyTimer:Float;
+
+	var filters:Array<BitmapFilter> = [];
+
+	var steve:BGSprite;
+	var groundGlitch:BGSprite;
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
@@ -349,6 +370,16 @@ class PlayState extends MusicBeatState
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
 		#end
+
+		if (SONG.song.toLowerCase() == 'hgu' && ClientPrefs.chromaticaberration)
+			{
+				camGame.setFilters(filters);
+				camHUD.setFilters(filters);
+				camGame.filtersEnabled = true;
+				camHUD.filtersEnabled = true;
+			}
+
+		filters.push(chromaticAberration);
 
 		GameOverSubstate.resetVariables();
 		var songName:String = Paths.formatToSongPath(SONG.song);
@@ -676,8 +707,7 @@ class PlayState extends MusicBeatState
 					add(bg);
 				}
 			case 'warzone':
-				Conductor.mapBPMChanges(SONG);
-				Conductor.changeBPM(SONG.bpm);
+				GameOverSubstate.characterName = 'bfGore';
 
 				var sky:FlxSprite = new FlxSprite(0,-300).loadGraphic(Paths.image('tankman/tankSky'));
 				sky.scrollFactor.set(0, 0);
@@ -706,12 +736,7 @@ class PlayState extends MusicBeatState
 
 				add(ruins);
 
-				tower = new FlxSprite(230, 150);
-				tower.frames = Paths.getSparrowAtlas('tankman/Torre_Glitch');
-				tower.animation.addByPrefix('idle', 'Torre Glitcn', 24, true);
-				tower.animation.play('idle');
-				tower.scrollFactor.set();
-				tower.scrollFactor.set(0.9, 0.9);
+				tower = new BGSprite('tankman/Torre_Glitch', 230, 150, 0.9, 0.9, ['Torre Glitcn']);
 				tower.scale.set(1.2, 1.2);
 
 				add(tower);
@@ -723,32 +748,25 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				add(ground);
 
-				var groundGlitch:FlxSprite = new FlxSprite(-155, 515);
-				groundGlitch.frames = Paths.getSparrowAtlas('tankman/glitch');
-				groundGlitch.animation.addByPrefix('idle', 'Glitch', 24, true);
-				groundGlitch.animation.play('idle');
-				groundGlitch.scrollFactor.set();
-				groundGlitch.scrollFactor.set(1, 1);
-
+				groundGlitch = new BGSprite('tankman/glitch', -155, 515, 1, 1, ['Glitch']);
 				groundGlitch.updateHitbox();
 				add(groundGlitch);
 				
-				var steve:FlxSprite = new FlxSprite(1368, 287);
-				steve.frames = Paths.getSparrowAtlas('tankman/steve');
-				steve.animation.addByPrefix('idle', 'Murito', 24, true);
-				steve.animation.play('idle');
-				steve.scrollFactor.set();
-				steve.scrollFactor.set(1, 1);
-
+				steve = new BGSprite('tankman/steve', 1368, 287, 1, 1, ['Murito']);
 				steve.updateHitbox();
 				add(steve);
 
-				var idk:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tankman/shaderIDK'));
+				var speakers = new BGSprite('tankman/Speakers', 500, 320, 1, 1, ['Speakers Idle Dance'], true);
+				speakers.dance();
+				speakers.updateHitbox();
+				add(speakers);
+
+				idk = new FlxSprite().loadGraphic(Paths.image('tankman/shaderIDK'));
 				idk.screenCenter();
 				idk.width = FlxG.width;
 				idk.height = FlxG.height;
 				idk.cameras = [camOther];
-				idk.alpha = 9;
+				idk.alpha = 0.9;
 				add(idk);
 		}
 
@@ -863,7 +881,7 @@ class PlayState extends MusicBeatState
 				case 'school' | 'schoolEvil':
 					gfVersion = 'gf-pixel';
 				case 'warzone':
-					gfVersion = 'gf-glitch';
+					gfVersion = 'gf';
 				default:
 					gfVersion = 'gf';
 			}
@@ -1242,6 +1260,12 @@ class PlayState extends MusicBeatState
 
 		Conductor.safeZoneOffset = (ClientPrefs.safeFrames / 60) * 1000;
 		callOnLuas('onCreatePost', []);
+
+		windowOrigin = new FlxPoint(Application.current.window.x, Application.current.window.y);
+		Application.current.window.onMove.add(function(x:Float, y:Float):Void
+		{
+			windowOrigin = new FlxPoint(x, y);
+		});
 		
 		super.create();
 	}
@@ -1328,6 +1352,105 @@ class PlayState extends MusicBeatState
 				}
 		}
 	}
+
+	public function addShaderToCamera(cam:String,effect:ShaderEffect){//STOLE FROM ANDROMEDA
+	  
+	  
+	  
+		switch(cam.toLowerCase()) {
+			case 'camhud' | 'hud':
+					camHUDShaders.push(effect);
+					var newCamEffects:Array<BitmapFilter>=[]; // IT SHUTS HAXE UP IDK WHY BUT WHATEVER IDK WHY I CANT JUST ARRAY<SHADERFILTER>
+					for(i in camHUDShaders){
+					  newCamEffects.push(new ShaderFilter(i.shader));
+					}
+					camHUD.setFilters(newCamEffects);
+			case 'camother' | 'other':
+					camOtherShaders.push(effect);
+					var newCamEffects:Array<BitmapFilter>=[]; // IT SHUTS HAXE UP IDK WHY BUT WHATEVER IDK WHY I CANT JUST ARRAY<SHADERFILTER>
+					for(i in camOtherShaders){
+					  newCamEffects.push(new ShaderFilter(i.shader));
+					}
+					camOther.setFilters(newCamEffects);
+			case 'camgame' | 'game':
+					camGameShaders.push(effect);
+					var newCamEffects:Array<BitmapFilter>=[]; // IT SHUTS HAXE UP IDK WHY BUT WHATEVER IDK WHY I CANT JUST ARRAY<SHADERFILTER>
+					for(i in camGameShaders){
+					  newCamEffects.push(new ShaderFilter(i.shader));
+					}
+					camGame.setFilters(newCamEffects);
+			default:
+				if(modchartSprites.exists(cam)) {
+					Reflect.setProperty(modchartSprites.get(cam),"shader",effect.shader);
+				} else if(modchartTexts.exists(cam)) {
+					Reflect.setProperty(modchartTexts.get(cam),"shader",effect.shader);
+				} else {
+					var OBJ = Reflect.getProperty(PlayState.instance,cam);
+					Reflect.setProperty(OBJ,"shader", effect.shader);
+				}
+			
+			
+				
+				
+		}
+	  
+	  
+	  
+	  
+  }
+
+  public function removeShaderFromCamera(cam:String,effect:ShaderEffect){
+	  
+	  
+		switch(cam.toLowerCase()) {
+			case 'camhud' | 'hud': 
+    camHUDShaders.remove(effect);
+    var newCamEffects:Array<BitmapFilter>=[];
+    for(i in camHUDShaders){
+      newCamEffects.push(new ShaderFilter(i.shader));
+    }
+    camHUD.setFilters(newCamEffects);
+			case 'camother' | 'other': 
+					camOtherShaders.remove(effect);
+					var newCamEffects:Array<BitmapFilter>=[];
+					for(i in camOtherShaders){
+					  newCamEffects.push(new ShaderFilter(i.shader));
+					}
+					camOther.setFilters(newCamEffects);
+			default: 
+				camGameShaders.remove(effect);
+				var newCamEffects:Array<BitmapFilter>=[];
+				for(i in camGameShaders){
+				  newCamEffects.push(new ShaderFilter(i.shader));
+				}
+				camGame.setFilters(newCamEffects);
+		}
+		
+	  
+  }
+	
+	
+	
+  public function clearShaderFromCamera(cam:String){
+	  
+	  
+		switch(cam.toLowerCase()) {
+			case 'camhud' | 'hud': 
+				camHUDShaders = [];
+				var newCamEffects:Array<BitmapFilter>=[];
+				camHUD.setFilters(newCamEffects);
+			case 'camother' | 'other': 
+				camOtherShaders = [];
+				var newCamEffects:Array<BitmapFilter>=[];
+				camOther.setFilters(newCamEffects);
+			default: 
+				camGameShaders = [];
+				var newCamEffects:Array<BitmapFilter>=[];
+				camGame.setFilters(newCamEffects);
+		}
+		
+	  
+  }
 
 	function startCharacterLua(name:String)
 	{
@@ -1538,6 +1661,8 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	//cuanto mas me la mamas mas me creceAquí tiene pa que me la bese, entre más me la beses más me crece, busca un cura pa que me la rece, y trae un martillo pa que me la endereces, por el chiquito se te aparece toas las veces y cuando te estreses aquí te tengo éste pa que te desestreses, con este tallo el culo se te esflorece, se cumple el ciclo hasta que anochece, todos los días y todas las veces, de tanto entablar la raja del culo se te desaparece, porque este sable no se compadece, si pides ñapa se te ofrece, y si repites se te agradece, no te hace rico pero tampoco te empobrece, no te hace inteligente pero tampoco te embrutece, y no paro aquí compa que éste nuevamente se endurece, hasta que amanece, cambie esa cara que parece que se entristece, si te haces viejo éste te rejuvenece, no te hago bulla porque depronto te ensordece, y eso cuadro no te favorece, pero tranquilo que éste te abastece, porque allá abajo se te humedece, viendo como el que me cuelga resplandece, si a ti te da miedo a mí me enorgullece, y así toas las vece ¿que te parece?, y tranquilo mijo que aquí éste reaparece, no haga fuerza porque éste se sobrecrece, una fresadora te traigo pa que me la freses, así se fortalece y de nuevo la historia se establece, que no se te nuble la vista porque éste te la aclarece, y sino le entendiste nuevamente la explicación se te ofrece, pa que por el chiquito éste de nuevo te empiece... Aquí tienes para que me la beses, entre más me la beses más me crece, busca un cura para que me la rece, un martillo para que me la endereces, un chef para que me la aderece, 8000 pijas por el culo se te aparecen, si me la sobas haces que se me espese, si quieres la escaneas y te la llevas para que en tu hoja de vida la anexes, me culeo a tu maldita madre y qué te parece le meti la pija a tú mamá hace 9 meses y después la puse a escuchar René de Calle 13 Te la meto por debajo del agua como los peces, y aquella flor de pija que en tu culo crece
+
 	var startTimer:FlxTimer;
 	var finishTimer:FlxTimer = null;
 
@@ -1615,6 +1740,13 @@ class PlayState extends MusicBeatState
 	
 					bottomBoppers.dance(true);
 					santa.dance(true);
+				}
+
+				if(curStage == 'warzone')
+				{
+					steve.dance();
+					groundGlitch.dance();
+					tower.dance();
 				}
 
 				switch (swagCounter)
@@ -2138,6 +2270,113 @@ class PlayState extends MusicBeatState
 
 		callOnLuas('onUpdate', [elapsed]);
 
+		/*trace('Window x:' + Application.current.window.x);
+		trace('Window y:' + Application.current.window.y);*/ //Aprendi a pensar
+
+		/*trace('Cam HUD scale X:' + camHUD.flashSprite.scaleX);
+		trace('Cam Game scale X:' + camGame.flashSprite.scaleX);
+		trace('Cam HUD scale Y:' + camHUD.flashSprite.scaleY);
+		trace('Cam Game scale Y:' + camGame.flashSprite.scaleY);
+		All = 1;*/
+
+		//This things isn't a switch bcs bugs lmao
+		if (Paths.formatToSongPath(SONG.song) == 'rsetss')
+		{
+			switch(curStep)
+			{
+				case 188 | 828:
+					FlxTween.tween(idk, {alpha: 1}, 0.32, {ease: FlxEase.quadInOut,
+					onComplete: function(twn:FlxTween) {
+						FlxTween.tween(idk, {alpha: 0.9}, 0.1, {ease: FlxEase.quadInOut});
+					}
+				});
+				case 276 | 852:
+					flipY();
+				case 278 | 312 | 854 | 888:
+					flipX();
+				case 316 | 892: 
+					resetFlip();
+					camGame.flashSprite.scaleY = 1; //SQUID GAMES !!
+					camHUD.flashSprite.scaleY = 1;
+					camGame.flashSprite.scaleX = 1;
+					camHUD.flashSprite.scaleX = 1;
+				case 640: 
+					camOther.flash(FlxColor.WHITE, 1);
+			}
+		}
+
+		if (Paths.formatToSongPath(SONG.song) == 'ugsn')
+		{
+			switch(curStep)
+			{
+				case 256 | 1152:
+					FlxTween.tween(idk, {alpha: 1}, 0.1, {ease: FlxEase.quadInOut});
+				case 384:
+					stopGame = false;
+					camGameMove();
+					camOtherMove();
+				case 510 | 1406:
+					stopGame = true;
+					stopHUD = true;
+				case 768: 
+					stopHUD = false;
+					camHUDMove();
+				case 894: 
+					stopGame = true;
+					stopHUD = true;
+					FlxTween.tween(idk, {alpha: 0.9}, 0.1, {ease: FlxEase.quadInOut});
+				case 1540: 
+					FlxTween.tween(idk, {alpha: 0.9}, 0.1, {ease: FlxEase.quadInOut});
+				case 1280: 
+					stopGame = false;
+					stopHUD = false;
+					camOtherMove();
+					camGameMove();
+					camHUDMove();
+			}
+		}
+
+		if (Paths.formatToSongPath(SONG.song) == 'hgu')
+		{
+			switch(curStep)
+			{
+				case 62 | 161 | 327 | 460 | 592 | 857 | 889:
+					if(Application.current.window.fullscreen)
+					{
+						camera.shake(0.02, 0.1);
+					} else
+					{
+						camera.shake(0.015, 0.05);
+						var randX:Int = FlxG.random.int(-5, 5);
+						var randY:Int = FlxG.random.int(-8, 8);
+						Lib.application.window.move(Lib.application.window.x + randX,Lib.application.window.y + randY);
+						new FlxTimer().start(0.2, function(tmr:FlxTimer)
+						{
+							Lib.application.window.move(Lib.application.window.x - randX,Lib.application.window.y - randY);
+						});
+					}
+					fuckMe = 0.015;
+					FlxTween.tween(this, {fuckMe: 0}, 0.1);
+				case 1196: 
+					if(Application.current.window.fullscreen)
+					{
+						camera.shake(0.02, 0.7);
+					} else
+					{
+						camera.shake(0.015, 0.7);
+						var randX:Int = FlxG.random.int(-5, 5);
+						var randY:Int = FlxG.random.int(-8, 8);
+						Lib.application.window.move(Lib.application.window.x + randX,Lib.application.window.y + randY);
+						new FlxTimer().start(0.2, function(tmr:FlxTimer)
+						{
+							Lib.application.window.move(Lib.application.window.x - randX,Lib.application.window.y - randY);
+						});
+					}
+					fuckMe = 0.015;
+					FlxTween.tween(this, {fuckMe: 0}, 0.3);
+			}
+		}
+
 		switch (curStage)
 		{
 			case 'schoolEvil':
@@ -2262,6 +2501,9 @@ class PlayState extends MusicBeatState
 				boyfriendIdleTime = 0;
 			}
 		}
+
+		if (SONG.song.toLowerCase() == 'hgu' && ClientPrefs.chromaticaberration)
+		setChrome(fuckMe);
 
 		super.update(elapsed);
 
@@ -2468,7 +2710,7 @@ class PlayState extends MusicBeatState
 				strumAngle += daNote.offsetAngle;
 				strumAlpha *= daNote.multAlpha;
 				var center:Float = strumY + Note.swagWidth / 2;
-
+				
 				if(daNote.copyX) {
 					daNote.x = strumX;
 				}
@@ -2626,6 +2868,10 @@ class PlayState extends MusicBeatState
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
+
+		for (i in shaderUpdates){
+			i(elapsed);
+		}
 	}
 
 	function openChartEditor()
@@ -3040,6 +3286,14 @@ class PlayState extends MusicBeatState
 						}
 					});
 				}
+			
+			case 'Window Name':
+				Application.current.window.title = value1;
+				switch (value1)
+				{
+					case '':
+						Application.current.window.title = Main.appTitle;
+				}
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -3290,7 +3544,7 @@ class PlayState extends MusicBeatState
 					CustomFadeTransition.nextCamera = null;
 				}
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('freeplay'));
 				changedDifficulty = false;
 			}
 			transitioning = true;
@@ -3708,6 +3962,13 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+
+		/*if (FlxG.keys.justPressed.SPACE){
+			if(boyfriend.animation.getByName('hey') != null) {
+				boyfriend.playAnim('hey', true);
+				boyfriend.specialAnim = true;
+			}
+		}*/ //Sam deleted the hey >:(
 	}
 
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
@@ -4188,6 +4449,7 @@ class PlayState extends MusicBeatState
 		}
 
 		lastStepHit = curStep;
+
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
 	}
@@ -4277,6 +4539,11 @@ class PlayState extends MusicBeatState
 				if(heyTimer <= 0) bottomBoppers.dance(true);
 				santa.dance(true);
 
+			case 'warzone':
+				steve.dance();
+				groundGlitch.dance();
+				tower.dance();
+
 			case 'limo':
 				if(!ClientPrefs.lowQuality) {
 					grpLimoDancers.forEach(function(dancer:BackgroundDancer)
@@ -4319,14 +4586,6 @@ class PlayState extends MusicBeatState
 
 				setOnLuas('curBeat', curBeat);//DAWGG?????
 		callOnLuas('onBeatHit', []);
-
-		switch (SONG.song.toLowerCase()) {
-			case 'HGU':
-				switch (curBeat) {
-					case 20:
-						bfCanDodge = true;
-				}
-		}
 	}
 
 	public var closeLuas:Array<FunkinLua> = [];
@@ -4419,6 +4678,87 @@ class PlayState extends MusicBeatState
 		setOnLuas('ratingName', ratingName);
 		setOnLuas('ratingFC', ratingFC);
 	}
+
+	var stopGame = true;
+	var stopHUD = true;
+
+	function flipX()
+		{
+			camGame.flashSprite.scaleX *= -1;
+			camHUD.flashSprite.scaleX *= -1;
+		}
+
+	function flipY()
+		{
+			camGame.flashSprite.scaleY *= -1;
+			camHUD.flashSprite.scaleY *= -1;
+		}
+
+	function resetFlip() //Fixed the shitty fliped cam
+		{
+			camGame.flashSprite.scaleY = 1;
+			camHUD.flashSprite.scaleY = 1;
+			camGame.flashSprite.scaleX = 1;
+			camHUD.flashSprite.scaleX = 1;
+		}
+	
+	function camOtherMove()
+		{
+			if(!stopHUD)
+			{
+				FlxTween.tween(camOther, {angle: -5}, 1, {ease: FlxEase.quadInOut,
+					onComplete: function(twn: FlxTween) {
+						FlxTween.tween(camOther, {angle: 5}, 1, {ease: FlxEase.quadInOut,
+							onComplete: function(twn: FlxTween) {
+								camOtherMove();
+							}
+						});
+					}
+				});
+			} else
+			{
+				FlxTween.tween(camOther, {angle: 0}, 0.3, {ease: FlxEase.quadInOut});
+			}
+		}
+
+	function camGameMove()
+		{
+			if(!stopGame)
+			{
+				FlxTween.tween(camGame, {angle: -5}, 1, {ease: FlxEase.quadInOut,
+					onComplete: function(twn: FlxTween) {
+						FlxTween.tween(camGame, {angle: 5}, 1, {ease: FlxEase.quadInOut,
+							onComplete: function(twn: FlxTween) {
+								camGameMove();
+							}
+						});
+					}
+				});
+			} else
+			{
+				FlxTween.tween(camGame, {angle: 0}, 0.3, {ease: FlxEase.quadInOut});
+			}
+		}
+	
+	function camHUDMove()
+		{
+			if(!stopHUD)
+			{
+				FlxTween.tween(camHUD, {angle: -5}, 1, {ease: FlxEase.quadInOut,
+					onComplete: function(twn: FlxTween) {
+						FlxTween.tween(camHUD, {angle: 5}, 1, {ease: FlxEase.quadInOut,
+							onComplete: function(twn: FlxTween) {
+								camHUDMove();
+							}
+						});
+					}
+				});
+			} else
+			{
+				FlxTween.tween(camHUD, {angle: 0}, 0.3, {ease: FlxEase.quadInOut});
+			}
+		}
+
 
 	#if ACHIEVEMENTS_ALLOWED
 	private function checkForAchievement(achievesToCheck:Array<String>):String {

@@ -58,6 +58,7 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
+				TitleState.lastStage = 4;
 		}
 	}
 
@@ -99,20 +100,29 @@ class OptionsState extends MusicBeatState
 		frontBG.antialiasing = ClientPrefs.globalAntialiasing;
 		add(frontBG);
 
-		fp = new FlxSprite(-1000, 190).loadGraphic(Paths.image('mainmenu/followPoint'));
+		fp = new FlxSprite(511, 190).loadGraphic(Paths.image('mainmenu/followPoint'));
 		fp.updateHitbox();
 		fp.antialiasing = ClientPrefs.globalAntialiasing;
 		add(fp);
+
 		FlxG.camera.follow(fp);
-		FlxTween.tween(bg, {x: 0}, 1.3, {
-			ease: FlxEase.sineInOut,
-			onComplete: function(twn:FlxTween)
-			{
-				bop(bg);
-			}
-		});
-		FlxTween.tween(fp, {x: 511}, 1.3, {ease: FlxEase.sineInOut});
-		FlxTween.tween(frontBG, {x: 0}, 1.3, {ease: FlxEase.sineInOut});
+
+		if(TitleState.lastStage == 1)
+		{
+			fp.x = -1000;
+			FlxTween.tween(bg, {x: 0}, 1.3, {
+				ease: FlxEase.sineInOut,
+				onComplete: function(twn:FlxTween)
+				{
+					bop(bg);
+				}
+			});
+			FlxTween.tween(fp, {x: 511}, 1.3, {ease: FlxEase.sineInOut});
+			FlxTween.tween(frontBG, {x: 0}, 1.3, {ease: FlxEase.sineInOut});
+		} else {
+			bg.x = 0;
+			frontBG.x = 0;
+		}
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
@@ -144,6 +154,11 @@ class OptionsState extends MusicBeatState
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
+		if(FlxG.sound.music.time < 6950)
+		{
+			FlxG.sound.music.time = 6950;
+		}
+
 		if (controls.UI_UP_P) {
 			changeSelection(-1);
 		}
@@ -162,7 +177,10 @@ class OptionsState extends MusicBeatState
 				ease: FlxEase.sineInOut,
 				onComplete: function(twn:FlxTween)
 				{
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
 					MusicBeatState.switchState(new MainMenuState());
+					TitleState.lastStage = 4;
 				}
 			});
 		}

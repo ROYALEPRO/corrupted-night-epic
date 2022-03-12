@@ -1,5 +1,5 @@
 {
-	"storyName": "Your New Week",
+	"storyName": "weekTank",
 	"difficulties": "Normal",
 	"hideFreeplay": false,
 	"weekBackground": "stage",
@@ -41,9 +41,9 @@
 		]
 	],
 	"weekCharacters": [
-		"dad",
-		"bf",
+		"tankmanlol",
+		"bfGore",
 		"gf"
 	],
-	"weekName": "Your Mom When"
+	"weekName": "weekTank"
 }

@@ -41,5 +41,6 @@ class End extends MusicBeatState
             FlxG.sound.playMusic(Paths.music('freakyMenu'));
             FlxG.sound.music.time = 6950;
             MusicBeatState.switchState(new MainMenuState());
+            TitleState.lastStage == 5;
     }   }
 }

@@ -70,6 +70,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('ChromaticAberration', //Name
+			'If checked, HGU Shaders will be turned on', //Description
+			'chromaticaberration', //Save data variable name
+			'bool', //Variable type
+			true); //Default value
+		addOption(option);
+
 		/*var option:Option = new Option('Note Delay',
 			'Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.',
 			'noteOffset',
